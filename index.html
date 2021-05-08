@@ -31,20 +31,16 @@
                 if(jahr.value == "" || monat.value == "" || tag.value == "")
                 {
                     alert("Formular unvollständig!");
-
                     return false;
                 }
                 else if(isNaN(jahr.value) || isNaN(monat.value) || isNaN(tag.value))           
                 {
                     alert("Der Wert muss eine Zahl sein!")
-
                     return false;
                 }               
                 else
                 {
-                    document.getElementById("usecase").value = "datum";
                     document.getElementById("Form1").submit();
-
                     return true;
                 }
             }     
@@ -55,11 +51,6 @@
                 monat.value = "";
                 tag.value = "";                
             }
-
-            function focusjahr(){ jahr.value = ""; }
-            function focusmonat(){ monat.value = ""; }
-            function focustag(){ tag.value = ""; }
-
         </script>
     </head>
     <body>
@@ -67,9 +58,9 @@
             <div id="box">
                         <label style="font-size: 25px; font-weight: bold;">Druck-Prüfung</label><p></p>
                         <label style="font-size: 20px; font-weight: bold;">Wählen Sie den Analysetag aus!</label><p></p>
-                        <label>Jahr: <input id="jahr" name="jahr" type="text" onclick="focusjahr()"></label> 
-                        <label>Monat:<input id="monat" name="monat" type="text" onclick="focusmonat()"></label>
-                        <label>Tag:<input id="tag" name="tag" type="text" onclick="focustag()"></label>                    
+                        <label>Jahr: <input id="jahr" name="jahr" type="text"></label> 
+                        <label>Monat:<input id="monat" name="monat" type="text"></label>
+                        <label>Tag:<input id="tag" name="tag" type="text"></label>                    
                         <label><==</label><input id="auswahl" type="button" value="Auswahl" onclick="validateData()"/> 
                         <input id="usecase" name="usecase" type="hidden"/>                     
 			</form>

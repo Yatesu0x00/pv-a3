@@ -92,13 +92,22 @@
         $monat = mysqli_real_escape_string($db, $_POST['monat']);
         $tag = mysqli_real_escape_string($db, $_POST['tag']);
         
-        $query = "SELECT year, month, day FROM data WHERE year = '$jahr' and month = '$monat' and day='$tag'";
+        $query = "SELECT * FROM data WHERE year = '$jahr' and month = '$monat' and day='$tag'";
         $res = mysqli_query($db, $query);
 
         $anz = mysqli_fetch_assoc(mysqli_query($db, "SELECT COUNT(Year) as anz_ FROM data WHERE Year = '$jahr' AND Month = '$monat' AND Day = '$tag'"));     
 
         $diff500= 0;
         $diff2500 = 0;
+
+        foreach($res as $row)
+        {
+            $diff500 = $diff500 + $row['D500'];
+            $diff2500 = $diff2500 + $row['D2500'];
+        }
+
+        $diff500 = number_format(((($diff500 / $anz['anz_']) / 500) * 100), 2);
+        $diff2500 = number_format(((($diff2500 / $anz['anz_']) / 2500) * 100), 2);
 
         if($anz['anz_'] == 0) 
         {
